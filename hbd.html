@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ff69b4;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1s ease; /* Transisi animasi */
+        }
+
+        .page.hidden {
+            transform: translateX(100%);
+        }
+
+        /* Halaman 1 */
+        #page1 {
+            background-color: #ff69b4;
+        }
+
+        .button-container {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #fff;
+            color: #ff69b4;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Halaman 2 */
+        #page2 {
+            background-color: #ffe4e1;
+            transform: translateX(100%); /* Awalnya di luar layar */
+        }
+
+        .container {
+            text-align: center;
+            color: #ff69b4;
+            margin-top: 20%;
+        }
+
+        h2 {
+            font-size: 5em;
+            text-shadow: 2px 2px 10px rgba(255, 105, 180, 0.6);
+            animation: glow 2s infinite alternate;
+        }
+
+        p {
+            font-size: 2em;
+            color: #ff69b4;
+            margin-top: -20px;
+            animation: floatText 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff69b4; }
+            to { text-shadow: 0 0 40px #ff69b4, 0 0 60px #ff69b4; }
+        }
+
+        @keyframes floatText {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+
+        /* Balloon, Confetti, Firework */
+        .balloon {
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            animation: floatBalloon 8s ease-in-out infinite;
+        }
+
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 2px;
+            height: 25px;
+            background-color: #ff69b4;
+            transform: translateX(-50%);
+        }
+
+        @keyframes floatBalloon {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-50px); }
+            100% { transform: translateY(0); }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 30px;
+            background-color: #fff;
+            animation: fall 4s linear infinite;
+            opacity: 0.9;
+        }
+
+        .confetti:nth-child(2n) { background-color: #ffb6c1; }
+        .confetti:nth-child(3n) { background-color: #ff69b4; }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            animation: fireworkExplode 1s ease-in-out infinite;
+        }
+
+        @keyframes fireworkExplode {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        /* Additional Animation for Stars */
+        .star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff69b4;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: twinkle 5s linear infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+    </style>
+    <script>
+        function goToNextPage() {
+            document.getElementById('page1').style.transform = 'translateX(-100%)'; // Geser halaman 1 ke kiri
+            document.getElementById('page2').style.transform = 'translateX(0)'; // Geser halaman 2 ke tengah
+        }
+    </script>
+</head>
+<body>
+    <!-- Halaman 1 -->
+    <div id="page1" class="page">
+        <div class="button-container">
+            <h1>Klik untuk Kejutan Ulang Tahun!</h1>
+            <button class="btn" onclick="goToNextPage()">Tekan Aku!</button>
+        </div>
+    </div>
+
+    <!-- Halaman 2 -->
+    <div id="page2" class="page hidden">
+        <div class="container">
+            <h2>Selamat Ulang Tahun!</h2>
+            <p>Semoga harimu penuh kebahagiaan dan cinta!</p>
+        </div>
+
+        <!-- Balloons -->
+        <div class="balloon" style="top: 20%; left: 10%; animation-duration: 7s;"></div>
+        <div class="balloon" style="top: 40%; left: 25%; animation-duration: 8s;"></div>
+        <div class="balloon" style="top: 30%; right: 15%; animation-duration: 6s;"></div>
+        <div class="balloon" style="top: 10%; right: 5%; animation-duration: 9s;"></div>
+
+        <!-- Confetti -->
+        <div class="confetti" style="top: 0; left: 20%;"></div>
+        <div class="confetti" style="top: 0; left: 40%; animation-delay: 1s;"></div>
+        <div class="confetti" style="top: 0; left: 60%; animation-delay: 2s;"></div>
+        <div class="confetti" style="top: 0; left: 80%; animation-delay: 3s;"></div>
+
+        <!-- Fireworks -->
+        <div class="firework" style="top: 30%; left: 50%;"></div>
+        <div class="firework" style="top: 60%; left: 30%; animation-delay: 0.5s;"></div>
+        <div class="firework" style="top: 50%; right: 30%; animation-delay: 1s;"></div>
+
+        <!-- Twinkling Stars -->
+        <div class="star" style="top: 10%; left: 50%; animation-duration: 5s;"></div>
+        <div class="star" style="top: 40%; left: 30%; animation-duration: 4s;"></div>
+        <div class="star" style="top: 60%; left: 20%; animation-duration: 6s;"></div>
+        <div class="star" style="top: 20%; right: 40%; animation-duration: 7s;"></div>
+    </div>
+</body>
+</html>
